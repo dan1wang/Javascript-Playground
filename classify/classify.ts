@@ -5,12 +5,11 @@
  */
 
 function classify(value: any):string { // tslint:disable-line:no-any
-  if (value === null) {
-    return 'null';
-  }
+  if (value === null) return 'null';
+  if (value === undefined) return 'undefined';
   const t = typeof value;
   switch (t) {
-    case "object":
+    case 'object':
       if (value.constructor) {
         if (value.constructor.name) {
           return value.constructor.name;
