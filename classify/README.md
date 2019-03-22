@@ -8,24 +8,33 @@ Code adapted from from Axel Rauschmayer's 2011-11-08 post
 # Example
 
 ```JavaScript
-function MyObject() { return this; }
-obj = new MyObject();
-classify(obj); // 'MyObject'
+// primitive
+classify(undefined); // 'undefined'
+classify(null); // 'null'
+
 classify(1); // 'number'
 classify(''); // 'string'
 classify(true); // 'boolean'
+
+// object
 classify(new Number(1)); // 'Number'
 classify(new String('')); // 'String'
 classify(new Boolean(true)); // 'Boolean'
+
+function MyObject() { return this; }
+obj = new MyObject();
+classify(obj); // 'MyObject'
 classify({}); // 'Object'
 classify([]); // 'Array'
-classify(undefined); // 'undefined'
-classify(null); // 'null'
 classify(/a-z/); // 'RegExp'
 classify(new Date()); // 'Date'
 classify(JSON.parse('{"a":1}')); // Object
 classify(document); // 'HTMLDocument'
+
+// argument
 (function() { return classify(arguments) }()); // 'Object'
+
+// function
 classify(function(){return 1}); // 'Function'
 ```
 
