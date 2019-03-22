@@ -9,6 +9,7 @@ function classify(value: any):string { // tslint:disable-line:no-any
   if (value === undefined) return 'undefined';
   const t = typeof value;
   switch (t) {
+    case 'function':
     case 'object':
       if (value.constructor) {
         if (value.constructor.name) {
