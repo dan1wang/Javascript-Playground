@@ -35,7 +35,8 @@ classify(obj); // 'MyObject'
 // unnamed constructor
 var Unknown = function(){return this; }
 unknown = new Unknown();
-classify(unknown); // 'Unknown'
+classify(unknown); // 'Unknown' in Chrome and Node.js
+                   // 'Object' in Internet Explorer 11 and Google Apps Script
 
 // argument
 (function() { return classify(arguments) }()); // 'Object'
