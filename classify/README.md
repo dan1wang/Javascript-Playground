@@ -7,7 +7,27 @@ Code adapted from from Axel Rauschmayer's 2011-11-08 post
 
 # Example
 
-(Placeholder)
+```JavaScript
+function MyObject() { return this; }
+obj = new MyObject();
+classify(obj); // 'MyObject'
+classify(1); // 'number'
+classify(''); // 'string'
+classify(true); // 'boolean'
+classify(new Number(1)); // 'Number'
+classify(new String('')); // 'String'
+classify(new Boolean(true)); // 'Boolean'
+classify({}); // 'Object'
+classify([]); // 'Array'
+classify(undefined); // 'undefined'
+classify(null); // 'null'
+classify(/a-z/); // 'RegExp'
+classify(new Date()); // 'Date'
+classify(JSON.parse('{"a":1}')); // Object
+classify(document); // 'HTMLDocument'
+(function() { return classify(arguments) }()); // 'Object'
+classify(function(){return 1}); // 'Function'
+```
 
 # References
 * Get the Name Of an Object's Type. (n.d.). Retrieved from https://stackoverflow.com/a/332429/3122071
