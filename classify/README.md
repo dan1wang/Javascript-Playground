@@ -20,16 +20,22 @@ classify(true); // 'boolean'
 classify(new Number(1)); // 'Number'
 classify(new String('')); // 'String'
 classify(new Boolean(true)); // 'Boolean'
-
-function MyObject() { return this; }
-obj = new MyObject();
-classify(obj); // 'MyObject'
 classify({}); // 'Object'
 classify([]); // 'Array'
 classify(/a-z/); // 'RegExp'
 classify(new Date()); // 'Date'
 classify(JSON.parse('{"a":1}')); // Object
 classify(document); // 'HTMLDocument'
+
+// named constructor
+function MyObject() { return this; }
+obj = new MyObject();
+classify(obj); // 'MyObject'
+
+// unnamed constructor
+var Unknown = function(){return this; }
+unknown = new Unknown();
+classify(unknown); // 'Unknown'
 
 // argument
 (function() { return classify(arguments) }()); // 'Object'
